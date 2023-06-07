@@ -28,57 +28,73 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button4 = new Button();
-            button1 = new Button();
-            button2 = new Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            panel1 = new Panel();
+            pictureBox1 = new PictureBox();
             button3 = new Button();
+            button2 = new Button();
+            button4 = new Button();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // button4
+            // panel1
             // 
-            button4.BackColor = SystemColors.ButtonFace;
-            button4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button4.Location = new Point(148, 285);
-            button4.Name = "button4";
-            button4.Size = new Size(172, 68);
-            button4.TabIndex = 3;
-            button4.Text = "Setting";
-            button4.UseVisualStyleBackColor = false;
+            panel1.Controls.Add(button3);
+            panel1.Controls.Add(button2);
+            panel1.Controls.Add(button4);
+            panel1.Controls.Add(pictureBox1);
+            panel1.Location = new Point(0, -2);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(491, 472);
+            panel1.TabIndex = 7;
             // 
-            // button1
+            // pictureBox1
             // 
-            button1.BackColor = SystemColors.ButtonFace;
-            button1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(148, 211);
-            button1.Name = "button1";
-            button1.Size = new Size(172, 68);
-            button1.TabIndex = 4;
-            button1.Text = "Profile";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.ButtonFace;
-            button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button2.Location = new Point(148, 137);
-            button2.Name = "button2";
-            button2.Size = new Size(172, 68);
-            button2.TabIndex = 5;
-            button2.Text = "Mode";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(491, 472);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // button3
             // 
             button3.BackColor = SystemColors.ButtonFace;
             button3.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
-            button3.Location = new Point(148, 63);
+            button3.Location = new Point(162, 103);
             button3.Name = "button3";
             button3.Size = new Size(172, 68);
-            button3.TabIndex = 6;
+            button3.TabIndex = 9;
             button3.Text = "Start";
             button3.UseVisualStyleBackColor = false;
             button3.Click += button3_Click;
+            // 
+            // button2
+            // 
+            button2.BackColor = SystemColors.ButtonFace;
+            button2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(162, 177);
+            button2.Name = "button2";
+            button2.Size = new Size(172, 68);
+            button2.TabIndex = 8;
+            button2.Text = "Mode";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
+            // 
+            // button4
+            // 
+            button4.BackColor = SystemColors.ButtonFace;
+            button4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            button4.Location = new Point(162, 251);
+            button4.Name = "button4";
+            button4.Size = new Size(172, 68);
+            button4.TabIndex = 7;
+            button4.Text = "Exit";
+            button4.UseVisualStyleBackColor = false;
+            button4.Click += button4_Click;
             // 
             // Form1
             // 
@@ -86,19 +102,20 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(491, 466);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(button4);
+            Controls.Add(panel1);
             Name = "Form1";
             Text = "Form1";
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-        private Button button4;
-        private Button button1;
-        private Button button2;
+
+        private Panel panel1;
         private Button button3;
+        private Button button2;
+        private Button button4;
+        private PictureBox pictureBox1;
     }
 }

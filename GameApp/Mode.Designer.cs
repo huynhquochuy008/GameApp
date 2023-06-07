@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Mode));
             panel1 = new Panel();
-            pictureBox1 = new PictureBox();
+            button4 = new Button();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
-            button4 = new Button();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -52,15 +52,16 @@
             panel1.Size = new Size(629, 449);
             panel1.TabIndex = 3;
             // 
-            // pictureBox1
+            // button4
             // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(629, 449);
-            pictureBox1.TabIndex = 0;
-            pictureBox1.TabStop = false;
+            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
+            button4.BackgroundImageLayout = ImageLayout.Stretch;
+            button4.Location = new Point(569, 12);
+            button4.Name = "button4";
+            button4.Size = new Size(48, 49);
+            button4.TabIndex = 6;
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // button3
             // 
@@ -73,6 +74,7 @@
             button3.TabIndex = 5;
             button3.Text = "Not hard";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click;
             // 
             // button2
             // 
@@ -85,6 +87,7 @@
             button2.TabIndex = 4;
             button2.Text = "Medium";
             button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // button1
             // 
@@ -97,17 +100,17 @@
             button1.TabIndex = 3;
             button1.Text = "Super Easy";
             button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
-            // button4
+            // pictureBox1
             // 
-            button4.BackgroundImage = (Image)resources.GetObject("button4.BackgroundImage");
-            button4.BackgroundImageLayout = ImageLayout.Stretch;
-            button4.Location = new Point(569, 12);
-            button4.Name = "button4";
-            button4.Size = new Size(48, 49);
-            button4.TabIndex = 6;
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            pictureBox1.Dock = DockStyle.Fill;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(629, 449);
+            pictureBox1.TabIndex = 0;
+            pictureBox1.TabStop = false;
             // 
             // Mode
             // 

@@ -12,6 +12,7 @@ namespace GameApp
 {
     public partial class Mode : Form
     {
+        string level = "0";
         public Mode()
         {
             InitializeComponent();
@@ -21,6 +22,30 @@ namespace GameApp
         {
             Form1 form = new Form1();
             form.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            level = "0";
+            StartForm start = new StartForm( level);
+            start.Show();
+            this.Hide();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            level = "1";
+            StartForm start = new StartForm(level);
+            start.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            level = "2";
+            StartForm start = new StartForm(level);
+            start.Show();
             this.Hide();
         }
     }
