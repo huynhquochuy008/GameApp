@@ -27,5 +27,12 @@ namespace GameApp
         {
             System.Environment.Exit(1);
         }
+
+        private void btnVocabulary_Click(object sender, EventArgs e)
+        {
+            Vocabulary vocabulary = new Vocabulary();
+            vocabulary.Show();
+            this.Hide();
+        }
     }
 }

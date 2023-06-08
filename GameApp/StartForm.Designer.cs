@@ -349,7 +349,7 @@
             btnSound.BackgroundImageLayout = ImageLayout.Stretch;
             btnSound.Image = (Image)resources.GetObject("btnSound.Image");
             btnSound.ImageAlign = ContentAlignment.TopLeft;
-            btnSound.Location = new Point(850, 12);
+            btnSound.Location = new Point(870, 12);
             btnSound.Name = "btnSound";
             btnSound.Size = new Size(36, 32);
             btnSound.TabIndex = 14;

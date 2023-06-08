@@ -15,42 +15,9 @@ namespace GameApp
 {
     public partial class StartForm : Form
     {
-        private string[] arrFruit = {
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\apple.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\strawberry.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\walnut.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\banana.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\guava.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\durian.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\grapes.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\orange.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\pear.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\fruit\\watermelon.jpg"
-        };
-        private string[] arrAnimals = {
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\bird.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\cat.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\chicken.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\dog.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\duck.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\elephant.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\frog.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\lion.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\monkey.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\animals\\tiger.jpg"
-        };
-        private string[] arrVehicle = {
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\bicycle.png",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\bus.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\car.png",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\helicopter.png",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\motorbike.png",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\plane.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\scooter.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\ship.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\train.jpg",
-            "E:\\Winform C#\\Lab2\\GameApp\\GameApp\\bin\\Debug\\Images\\vehicle\\truck.jpg"
-        };
+        private string[] arrFruit;
+        private string[] arrAnimals;
+        private string[] arrVehicle;
         int level = 0;
         int questNo = 0;
         int score = 0;
@@ -64,8 +31,10 @@ namespace GameApp
         {
             InitializeComponent();
             Int32.TryParse(qs, out level);
+            initData();
             init();
             initRank();
+            
 
         }
 
@@ -111,11 +80,10 @@ namespace GameApp
             }
             else if (questNo == 4 && (tbAnswer.Text.ToLower() == Path.GetFileNameWithoutExtension(questions[questNo])))
             {
-                questNo++;
                 score += 2;
                 tbAnswer.Text = "";
                 lbScore.Text = "Score: " + score;
-                using (StreamWriter writer = new StreamWriter(path,append:true))
+                using (StreamWriter writer = new StreamWriter(path, append: true))
                 {
                     writer.Write(DateTime.Now.ToString("MM/dd/yyyy hh:mm:ss tt") + "; ");
                     writer.Write(level + "; ");
@@ -301,11 +269,14 @@ namespace GameApp
             player = new System.Media.SoundPlayer(@"E:\\Winform C#\\Lab2\\GameApp\\GameApp\bin\\Debug\\Sounds\\nhacgame01.wav");
             player.Play();
         }
-
+        private void initData()
+        {
+            arrFruit = Directory.GetFiles(@"E:\Winform C#\Lab2\GameApp\GameApp\bin\Debug\Images\fruit\");
+            arrAnimals = Directory.GetFiles(@"E:\Winform C#\Lab2\GameApp\GameApp\bin\Debug\Images\animals\");
+            arrVehicle = Directory.GetFiles(@"E:\Winform C#\Lab2\GameApp\GameApp\bin\Debug\Images\vehicle\");
+        }
         private void initRank()
         {
-
-
             using (StreamReader file = new StreamReader(path))
             {
                 string ln;
@@ -324,21 +295,21 @@ namespace GameApp
             listModel.Sort(new ModelComparer());
 
             lbDate1.Text = ((RankModel)listModel[listModel.Count - 1]).getTime().ToString();
-            lbDate2.Text = ((RankModel)listModel[listModel.Count-2]).getTime().ToString();
-            lbDate3.Text = ((RankModel)listModel[listModel.Count-3]).getTime().ToString();
-            lbDate4.Text = ((RankModel)listModel[listModel.Count-4]).getTime().ToString();
-            lbDate5.Text = ((RankModel)listModel[listModel.Count-5]).getTime().ToString();
+            lbDate2.Text = ((RankModel)listModel[listModel.Count - 2]).getTime().ToString();
+            lbDate3.Text = ((RankModel)listModel[listModel.Count - 3]).getTime().ToString();
+            lbDate4.Text = ((RankModel)listModel[listModel.Count - 4]).getTime().ToString();
+            lbDate5.Text = ((RankModel)listModel[listModel.Count - 5]).getTime().ToString();
 
-            lbLevel1.Text = ((RankModel)listModel[listModel.Count-1]).getLevel().ToString();
-            lbLevel2.Text = ((RankModel)listModel[listModel.Count-2]).getLevel().ToString();
-            lbLevel3.Text = ((RankModel)listModel[listModel.Count-3]).getLevel().ToString();
-            lbLevel4.Text = ((RankModel)listModel[listModel.Count-4]).getLevel().ToString();
-            lbLevel5.Text = ((RankModel)listModel[listModel.Count-5]).getLevel().ToString();
+            lbLevel1.Text = ((RankModel)listModel[listModel.Count - 1]).getLevel().ToString();
+            lbLevel2.Text = ((RankModel)listModel[listModel.Count - 2]).getLevel().ToString();
+            lbLevel3.Text = ((RankModel)listModel[listModel.Count - 3]).getLevel().ToString();
+            lbLevel4.Text = ((RankModel)listModel[listModel.Count - 4]).getLevel().ToString();
+            lbLevel5.Text = ((RankModel)listModel[listModel.Count - 5]).getLevel().ToString();
 
-            lbScore1.Text = ((RankModel)listModel[listModel.Count-1]).getScore().ToString();
+            lbScore1.Text = ((RankModel)listModel[listModel.Count - 1]).getScore().ToString();
             lbScore2.Text = ((RankModel)listModel[listModel.Count - 2]).getScore().ToString();
-            lbScore3.Text = ((RankModel)listModel[listModel.Count -3]).getScore().ToString();
-            lbScore4.Text = ((RankModel)listModel[listModel.Count -4]).getScore().ToString();
+            lbScore3.Text = ((RankModel)listModel[listModel.Count - 3]).getScore().ToString();
+            lbScore4.Text = ((RankModel)listModel[listModel.Count - 4]).getScore().ToString();
             lbScore5.Text = ((RankModel)listModel[listModel.Count - 5]).getScore().ToString();
 
 
